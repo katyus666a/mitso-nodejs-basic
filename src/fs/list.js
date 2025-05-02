@@ -1,5 +1,24 @@
+
+import { promises as fs } from 'fs';
+import { join } from 'path';
+
 const list = async () => {
     // Write your code here 
+    const directoryPath = join('files');
+
+    try {
+        
+        await fs.access(directoryPath);
+
+        
+        const files = await fs.readdir(directoryPath);
+
+        
+        console.log(files);
+    } catch (err) {
+        throw new Error('FS operation failed');
+    }
 };
 
+await list();
 await list();
